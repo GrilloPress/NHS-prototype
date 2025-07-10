@@ -1,0 +1,275 @@
+
+
+
+
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+<!-- DYNAMIC PAGE TITLE -->
+{{ dynamicPageTitle({
+    logo: data['web'] !== "yes",
+    greetingName: data['userFirstName'] + " " + data['userLastName'],
+    nhsNumber: data['nhsNumber']
+  })}}
+
+  <div style="padding:.5rem 1rem;border: 1px solid;border-radius: 12px;margin-bottom:2rem;background-color: #133b81;color: white;">
+
+    <!-- SECTION - SERVICES -->
+  {{ nhsappSectionHeading({
+    headingText: "Get care"
+  }) }}
+
+  <p>Check in with the NHS App so we can get you the right care, right away</p>
+
+  <button  id="open-modal" href="ask" style="margin-bottom: 1rem;" role="button"
+class="nhsuk-button nhsuk-button--reverse nhsapp-button"
+>
+Start a new health query
+</button>
+
+  </div>
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+
+        <div 
+  id="voice-modal"
+  style="
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to bottom, #003d78, #005eb8);
+    color: white;
+    z-index: 9999;
+    text-align: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  "
+>
+        
+          <!-- Top-right close X -->
+          <button 
+            id="close-x" 
+            aria-label="Close"
+            style="
+              position: absolute;
+              top: 16px;
+              right: 20px;
+              background: none;
+              border: none;
+              color: white;
+              font-size: 2rem;
+              cursor: pointer;
+              line-height: 1;
+            "
+          >
+            &times;
+          </button>
+        
+          <!-- Heading -->
+          <h1 class="nhsuk-heading-xl" style="color: white;">Alex, how can we help today?</h1>
+    
+          <div id="svg-wrapper" style="margin: 40px auto; width: 100px; height: 120px;">
+            <svg
+              id="sound-bars"
+              width="100"
+              height="120"
+              viewBox="0 0 80 120"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Taller bars with slight rounding -->
+              <rect x="4"  y="60"  width="2"  height="30" rx="3"/>
+              <rect x="12" y="54"  width="2.5" height="40" rx="4"/>
+              <rect x="20" y="48"  width="3"  height="50" rx="5"/>
+              <rect x="28" y="42"  width="3.5" height="60" rx="6"/>
+              <!-- Middle biggest -->
+              <rect x="36" y="34"  width="5"  height="72" rx="7"/>
+              <rect x="46" y="42"  width="3.5" height="60" rx="6"/>
+              <rect x="54" y="48"  width="3"  height="50" rx="5"/>
+              <rect x="62" y="54"  width="2.5" height="40" rx="4"/>
+              <rect x="70" y="60"  width="2"  height="30" rx="3"/>
+            </svg>
+          </div>
+          
+          
+          
+          
+          
+          
+        
+          <!-- Transcript -->
+          <p id="transcript" class="nhsuk-body-l" style="color: white;">Listening...</p>
+        
+          <!-- Half-width centered Search button -->
+          <button 
+            class="nhsuk-button nhsuk-button--reverse" 
+            id="close-modal"
+            style="
+              margin-top: 40px;
+              width: 50%;
+              max-width: 300px;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            "
+          >
+            Search
+          </button>
+        </div>
+        
+        <!-- Animation styles -->
+        <style>
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+        
+          .pulsing {
+            animation: pulse 1s infinite;
+          }
+        </style>
+        
+        <script>
+          const open = document.getElementById('open-modal');
+          const close = document.getElementById('close-modal');
+          const closeX = document.getElementById('close-x');
+          const modal = document.getElementById('voice-modal');
+          const transcript = document.getElementById('transcript');
+          const soundBars = document.getElementById('sound-bars');
+        
+          function closeModal() {
+            modal.style.display = 'none';
+            transcript.textContent = 'Listening...';
+            soundBars.classList.remove('pulsing');
+          }
+        
+          open.addEventListener('click', () => {
+            modal.style.display = 'block';
+            transcript.textContent = 'Listening...';
+            soundBars.classList.add('pulsing');
+        
+            // Simulated "live" speech input
+            setTimeout(() => {
+              transcript.textContent = '“I have persistent foot pain and difficulty walking due to my toenail”';
+              soundBars.classList.remove('pulsing');
+            }, 2000);
+          });
+        
+          // Navigate on search button click
+            close.addEventListener('click', () => {
+                window.location.href = '/v1/additional/pod';
+            });
+          closeX.addEventListener('click', closeModal);
+        </script>
+
+
+  <!-- SECTION - SERVICES -->
+  {{ nhsappSectionHeading({
+    headingText: "Services",
+    linkText: "View all",
+    linkUrl: "/pages/services-p9",
+    linkAriaLabel: "View all services"
+  }) }}
+
+  {{ nhsappCardGroup({
+    stacked: true,
+    cards: [
+      {
+        title: "Request medicines",
+        href: "/pages/your-health/repeat-prescription/select-medicines"
+      },
+      {
+        title: "Check if you need urgent medical help using 111 online",
+        href: "#"
+      }
+    ]
+  }) }}
+
+  <!-- SECTION - YOUR HEALTH -->
+  {{ nhsappSectionHeading({
+    headingText: "Your health",
+    linkText: "View all",
+    linkUrl: "/pages/your-health-p9",
+    linkAriaLabel: "View all your health"
+  }) }}
+
+  {{ nhsappCardGroup({
+    stacked: true,
+    cards: [
+      {
+        title: "GP health record",
+        href: "#"
+      },
+      {
+        title: "View and manage prescriptions",
+        href: "/pages/your-health/prescriptions-p9"
+      },
+      {
+        title: "Upcoming and past appointments",
+        href: "/pages/your-health/upcoming-and-past-appointments-p9"
+      }
+    ]
+  }) }}
+
+  <!-- SECTION - MESSAGES -->
+  {{ nhsappSectionHeading({
+    headingText: "Messages"
+  }) }}
+
+  {% if data['messages'] > 0 %}
+    {{ nhsappCardGroup({
+      stacked: true,
+      cards: [
+        {
+          title: 'View your messages',
+          href: '/pages/messages-p9',
+          prefixIcon: 'messagesUnread',
+          linkAriaLabel: 'Messages, you have ' + data['messages'] + ' unread messages',
+          badgeLarge: {
+            count: data['messages'],
+            label: 'unread messages',
+            ariaHidden: true
+          }
+        }
+      ]
+    }) }}
+  {% else %}
+    {{ nhsappCardGroup({
+      stacked: true,
+      cards: [
+        {
+          title: 'View your messages',
+          href: '/pages/messages-p9',
+          prefixIcon: 'messages'
+        }
+      ]
+    }) }}
+  {% endif %}
+
+  <!-- SECTION - SWITCH PROFILES -->
+  {{ nhsappSectionHeading({
+    headingText: "Account"
+  }) }}
+
+  {{ nhsappCard({
+    title: 'Manage services for another person',
+    href: '/pages/account-and-settings/linked-profiles',
+    prefixIcon: 'switchProfile'
+  }) }}
+        
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

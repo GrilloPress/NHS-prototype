@@ -1,0 +1,139 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Services" %}
+
+{% set pageHeading = "Appointment confirmed" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      {{ panel({
+        titleText: pageHeading
+      }) }}
+
+      <p class="nhsuk-u-font-size-24">
+        <span class="nhsuk-u-visually-hidden">Date: </span>{{ data['appointment-date'] or 'Wednesday 29 May 2024' }}<br>
+        <span class="nhsuk-u-visually-hidden">Time: </span>{{ data['appointment-time'] or '9:00am' }}</span>
+      </p>
+      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+      <p>
+        <span class="nhsuk-u-visually-hidden">Location: </span>{{ data['appointment-location'] or 'York Road Practice' }} <br>
+      </p>
+        
+      {{ button({
+        text: "Add to calendar",
+        classes: "nhsuk-u-margin-top-1 nhsapp-button nhsuk-button--secondary"
+      }) }}
+
+      <h2 class="nhsuk-heading-m">Progress</h2>
+
+      <ol class="nhsapp-timeline">
+        <!-- Item 1 -->
+        <li class="nhsapp-timeline__item nhsapp-timeline__item--past">
+          <svg class="nhsapp-timeline__badge" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+            <circle cx="14" cy="14" r="13" fill="#005EB8"></circle>
+          </svg>
+      
+      
+        <div class="nhsapp-timeline__content">
+        <h3 class="nhsapp-timeline__header">Completed</h3>
+
+        <p class="nhsapp-timeline__description">Submit your symptoms</p>
+        </div>
+        </li>
+        
+        <!-- Item 2 -->
+        <li class="nhsapp-timeline__item nhsapp-timeline__item--past">
+        <svg class="nhsapp-timeline__badge" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+        <circle cx="14" cy="14" r="13" fill="#005EB8"></circle>
+        </svg>
+        
+        <div class="nhsapp-timeline__content">
+        <h3 class="nhsapp-timeline__header">
+        Completed
+        </h3>
+
+        <p class="nhsapp-timeline__description">GP review</p>
+        </div>
+        </li>
+
+        <!-- Item 3 -->
+        <li class="nhsapp-timeline__item nhsapp-timeline__item--past">
+          <svg class="nhsapp-timeline__badge" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+          <circle cx="14" cy="14" r="13" fill="#005EB8"></circle>
+          </svg>
+          
+          <div class="nhsapp-timeline__content">
+          <h3 class="nhsapp-timeline__header">
+          Completed
+          </h3>
+  
+          <p class="nhsapp-timeline__description">Recommended action</p>
+          </div>
+          </li>
+
+          <!-- Item 4 -->
+        <li class="nhsapp-timeline__item nhsapp-timeline__item--past">
+          <svg class="nhsapp-timeline__badge" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+          <circle cx="14" cy="14" r="13" fill="#005EB8"></circle>
+          </svg>
+          
+          <div class="nhsapp-timeline__content">
+          <h3 class="nhsapp-timeline__header">
+          Completed
+          </h3>
+  
+          <p class="nhsapp-timeline__description">Book blood test</p>
+          </div>
+          </li>
+
+          <!-- Item 4 -->
+        <li class="nhsapp-timeline__item">
+          <svg class="nhsapp-timeline__badge" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+          <circle cx="14" cy="14" r="13" fill="#005EB8"></circle>
+          </svg>
+          
+          <div class="nhsapp-timeline__content">
+          <h3 class="nhsapp-timeline__header nhsuk-u-font-weight-bold">
+          Current status
+          </h3>
+  
+          <p class="nhsapp-timeline__description">Complete blood test</p>
+          </div>
+          </li>
+
+    <!-- Item 4 -->
+    <li class="nhsapp-timeline__item">
+        <svg class="nhsapp-timeline__badge nhsapp-timeline__badge--small" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+        <circle cx="7" cy="7" r="6" fill="white" stroke="#AEB7BD" stroke-width="2"></circle>
+        </svg>
+        
+        <div class="nhsapp-timeline__content">
+        <h3 class="nhsapp-timeline__header"><a href="/v1/questions/message2">Future step</a></h3>
+        <p class="nhsapp-timeline__description">Blood test results</p> 
+        </div> 
+    </li> 
+</ol>
+
+      <h2 class="nhsuk-heading-s">What you can do next</h2>
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        classes: "app-cards--secondary",
+        cards: [
+          {
+            title: "View upcoming appointments",
+            href: "#"
+          }
+        ]
+      }) }}
+
+
+    </div>
+  </div>
+
+  {% endblock %}
+
+

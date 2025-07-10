@@ -1,0 +1,46 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Portland Street Great Westood Surgery" %}
+{% set pageDescription = "Received today at 1:02pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>A specialist has reviewed your scan. We've booked a video consultation to talk through the results.
+        </p>
+
+        <p>You'll be able to ask any questions and talk through next steps with the specialist.</p>
+
+        <h2 class="nhsuk-heading-s">Your appointment</h2>
+
+        <p class="">
+          <span class="nhsuk-u-visually-hidden">Date: </span>{{ data['appointment-date'] or 'Wednesday 29 May 2025' }}<br>
+          <span class="nhsuk-u-visually-hidden">Time: </span>{{ data['appointment-time'] or '9:00am' }}</span>
+        </p>
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+        <p>
+          <span class="nhsuk-u-visually-hidden">Location: </span>Online via NHS App <br>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form method="post" action="/v1/time">
+  
+        {{ radios({
+          idPrefix: "location",
+          name: "location",
+          fieldset: {
+            legend: {
+              text: "Where would you prefer to have your blood test?",
+              classes: "nhsuk-fieldset__legend--l"
+            }
+          },
+          items: [
+            {
+              value: "community-diagnostic-centre",
+              text: "Community diagnostic centre"
+            },
+            {
+              value: "hospital",
+              text: "Hospital"
+            }
+          ]
+        }) }}
+    
+        {{ button({
+          text: "Continue"
+        }) }}
+
+
+    </div>
+  </div>
+
+{% endblock %}

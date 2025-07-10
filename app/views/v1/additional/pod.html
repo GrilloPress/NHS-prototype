@@ -1,0 +1,35 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set backLink = true %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>{{data['userFirstName'] | capitalize }}, you can self-refer to an NHS podiatrist in your area.</h1>
+
+      <p>A podiatrist is a healthcare professional who looks after your feet and lower legs. They can help with problems like pain, injuries, infections, or conditions that affect how you walk.  </p>
+
+      <form method="post" enctype="multipart/form-data" action="/v1/additional/2">
+
+        <h2 class="nhsuk-heading-m">How to use this service</h2>
+
+        <p>You will  be asked some questions about yourself and your condition. When you select a service they may tell you how long you may need to wait for your first appointment.</p>
+      
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+      
+
+        </form> 
+
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>{{data['userFirstName'] | capitalize }}, how can we help you today?</h1>
+
+      <form method="post" enctype="multipart/form-data" action="/v1/wait">
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="problem">
+              Describe the problem
+            </label>
+            <textarea class="nhsuk-textarea" id="problem" name="problem" rows="5"></textarea>
+          </div>
+      
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="photo">
+              Upload a photo (optional)
+            </label>
+            <input class="nhsuk-file-upload" id="photo" name="photo" type="file">
+          </div>
+      
+          <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="help">
+              What help would you like?
+            </label>
+            <textarea class="nhsuk-textarea" id="help" name="help" rows="4"></textarea>
+          </div>
+      
+          <button class="nhsuk-button" type="submit">
+            Continue
+          </button>
+      
+
+        </form> 
+
+
+    </div>
+  </div>
+
+{% endblock %}

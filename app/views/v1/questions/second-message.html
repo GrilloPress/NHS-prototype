@@ -1,0 +1,37 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Portland Street Great Westood Surgery" %}
+{% set pageDescription = "Received today at 1:02pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>We have reviewed your blood results. I have consulted a specialist about them.
+        </p>
+
+        <p>The specialist would like some more information from you to help recommend next steps</p>
+
+        <p><a href="/v1/questions/q1">Complete questionnaire</a></p>
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}

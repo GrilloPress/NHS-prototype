@@ -1,0 +1,34 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <h1>Have you recently started feeling more tried than usual?</h1>
+
+      <form method="post" enctype="multipart/form-data" action="/v1/questions/wait">
+
+        <div class="nhsuk-form-group">
+            <label class="nhsuk-label" for="q1">
+              Your answer
+            </label>
+            <textarea class="nhsuk-textarea" id="q1" name="q1" rows="5"></textarea>
+          </div>
+      
+          <button class="nhsuk-button" type="submit">
+            Submit
+          </button>
+      
+
+        </form> 
+
+
+    </div>
+  </div>
+
+{% endblock %}
