@@ -1,0 +1,65 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form method="post" action="/v2/answer">
+
+        <h1>Confirm you don't need emergency care</h1>
+
+        <div class="nhsuk-card nhsuk-card--care nhsuk-card--care--emergency">
+            <div class="nhsuk-card--care__heading-container">
+              <h2 class="nhsuk-card--care__heading"> <span role="text"><span class="nhsuk-u-visually-hidden">Immediate action required: </span>Call 999 or go to A&E if you:</span> </h2> <span class="nhsuk-card--care__arrow" aria-hidden="true"></span>
+            </div>
+            <div class="nhsuk-card__content">
+              <ul>
+                <li>have a head injury - for example, from a fall or accident</li>
+                <li>have a headache that came on suddenly and is extremely painful</li>
+              </ul>
+              <p>You have an extremely painful headache and:</p>
+              <ul>
+                <li>sudden problems speaking or remembering things</li>
+                <li>loss of vision</li>
+                <li>feel drowsy or confused</li>
+                <li>have a very high temperature</li>
+                <li>the white part of the eye is red</li>
+              </ul>
+            </div>
+          </div>
+  
+        {{ radios({
+          idPrefix: "urgent",
+          name: "urgent",
+          fieldset: {
+            legend: {
+              text: "Do you have any of the symptoms decribed?",
+              classes: "nhsuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Yes, I have one or many of these"
+            },
+            {
+              value: "no",
+              text: "No"
+            }
+          ]
+        }) }}
+    
+        {{ button({
+          text: "Continue"
+        }) }}
+
+
+    </div>
+  </div>
+
+{% endblock %}

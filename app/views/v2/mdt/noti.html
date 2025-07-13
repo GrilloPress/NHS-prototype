@@ -1,0 +1,16 @@
+{% extends 'layout-ios-locked-screen.html' %}
+
+{% set statusBar = true %}
+
+{% block content %}
+    
+  <a id="ios-notification" class="ios-notification" href="/v2/pifu/">
+    <img class="ios-notification-icon" src='/images/nhs-icon-512.png' alt="">
+    <div class="ios-notification-message">
+      <div class="ios-notification-app">Riverside Pharmacy</div>
+      <div class="ios-notification-content">Your prescription is ready to collect</div>
+    </div>
+    <div class="ios-notification-time">now</div>
+  </a>
+
+{% endblock %}

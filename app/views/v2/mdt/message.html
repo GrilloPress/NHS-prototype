@@ -1,0 +1,53 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Range Surgery" %}
+{% set pageDescription = "Received today at 1:02pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      <div class="nhsuk-u-margin-bottom-7">
+        <p>We have reviewed your records and the recent MRI scan. In discussion with specialists at Greatwood Hospital, we feel that we should try adjusting <a href="/v2/mdt/noti">your prescription</a> as the dose strength can cause headaches.
+        </p>
+
+        <p>We'll check in to see if the new prescription makes a difference and work form there.</p>
+
+        <p>If you have any questions, you can contact us and we can discuss your updated plan.</p>
+
+        <p>You'll be notified when your updated prescription is ready to pick up</p>
+      </div>
+
+      <hr />
+
+
+      {{ nhsappCardGroup({
+        stacked: true,
+        classes: "app-cards--secondary",
+        cards: [
+          {
+            title: "View full details of discussion between Range Surgery and Greatwood Hospital",
+            href: "#"
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+  {% endblock %}

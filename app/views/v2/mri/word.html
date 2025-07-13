@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>iOS-style Video Call</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body style="margin: 0; padding: 0; background-color: black; font-family: -apple-system, BlinkMacSystemFont, sans-serif; height: 100vh; overflow: hidden; position: relative;">
+
+    <!-- Fullscreen background (simulated video) -->
+    <div style="background-image: url('https://via.placeholder.com/800x1200'); background-size: cover; background-position: center; width: 100%; height: 100%; position: absolute; top: 0; left: 0;"></div>
+
+    <!-- PiP user bubble -->
+    <div style="
+      position: absolute;
+      top: 30px;
+      right: 20px;
+      width: 120px;
+      height: 180px;
+      background-color: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    ">
+      <img src="https://via.placeholder.com/120x180" alt="Self view" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <!-- Call controls (bottom center) -->
+    <div style="
+      position: absolute;
+      bottom: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    ">
+
+      <!-- Mic button -->
+      <button style="
+        background-color: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      ">
+        <img src="https://img.icons8.com/ios-filled/50/000000/microphone.png" alt="Mic" style="width: 28px; height: 28px;">
+      </button>
+
+      <!-- End call button -->
+      <button style="
+        background-color: #ff3b30;
+        border: none;
+        border-radius: 50%;
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      ">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/end-call.png" alt="End Call" style="width: 30px; height: 30px;">
+      </button>
+
+      <!-- Camera button -->
+      <button style="
+        background-color: rgba(255,255,255,0.9);
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      ">
+        <img src="https://img.icons8.com/ios-filled/50/000000/video-call.png" alt="Camera" style="width: 28px; height: 28px;">
+      </button>
+
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+        <h1>Based on your answers, your GP thinks you should book an MRI scan</h1>
+          <div class="nhsuk-inset-text">
+            <p><strong>Your result:</strong></p>
+                  <p>Using your health records, previous answers and wearable data, your GP believes you should get a scan to help diagnose what's causing your headaches</p>
+          </div>
+  
+          <p>Once you've had your MRI scan, your GP will review it with a specialist.</p>
+  
+          <div style="margin-top: 20px;">
+              <a
+              class="nhsuk-button nhsapp-button--primary nhsapp-button"
+              data-module="nhsuk-button"
+              type="submit"
+              href="/v2/mri/book"
+              >
+                  Book your MRI scan
+              </a>
+          </div>
+  
+    </div>
+  </div>
+
+{% endblock %}
