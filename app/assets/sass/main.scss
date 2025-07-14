@@ -67,3 +67,25 @@
     margin: 0 auto;
   }
 }
+
+
+.message-container {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border-right: 10px solid white;
+  margin-right: 1rem;
+}
+
+.message-card {
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.message-container--reply {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border-right: 10px solid white;
+  margin-right: 1rem;
+}

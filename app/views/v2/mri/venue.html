@@ -1,0 +1,50 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+
+      <form method="post" action="/v2/mri/book">
+  
+        {{ radios({
+          idPrefix: "urgent",
+          name: "urgent",
+          fieldset: {
+            legend: {
+              text: "Select venue",
+              classes: "nhsuk-fieldset__legend--l",
+              isPageHeading: true
+            }
+          },
+          items: [
+            {
+              value: "a",
+              text: "Mudflat Community diagnostic hub",
+              hint: {
+                text: "First appointment: Tomorrow, 16 July 2025"
+              }
+            },
+            {
+              value: "b",
+              text: "Greatwood Hospital Imaging Department",
+              hint: {
+                text: "First appointment: 29 June 2025, "
+              }
+            }
+          ]
+        }) }}
+    
+        {{ button({
+          text: "Continue"
+        }) }}
+
+
+    </div>
+  </div>
+
+{% endblock %}

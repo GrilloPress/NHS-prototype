@@ -1,0 +1,40 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block content %}
+
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-full">
+      <h1>Based on your answers, your GP should review your symptoms</h1>
+        <div class="nhsuk-inset-text">
+          <p><strong>Your result:</strong></p>
+                <p>Using your health records, previous answers and wearable data, your GP will review your information and help diagnose what's causing your headaches</p>
+        </div>
+
+        <h2 class="nhsuk-heading-m">What this means</h2>
+
+        <p>Regular headaches may need further investigation to get to the cause of them. Your GP will check your answers and health records to confirm how and where you should get further help</p>
+        <p>You should hear back in the next 24 hours.</p>
+
+        <div style="margin-top: 20px;">
+            <a
+            class="nhsuk-button nhsapp-button--primary nhsapp-button"
+            data-module="nhsuk-button"
+            type="submit"
+            href="/v2/gphelp/"
+            >
+                Send request to GP
+            </a>
+        </div>
+
+        <a href="#">Change your answers</a>
+
+  </div>
+</div>
+
+{% endblock %}
+
+

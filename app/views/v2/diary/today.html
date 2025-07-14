@@ -1,0 +1,141 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Home" %}
+
+{% set pageHeading = "Home" %}
+
+{% block pageTitle %}
+Headache Diary - NHS App
+{% endblock %}
+
+{% block content %}
+
+<h1 class="nhsuk-heading-xl">Track your headache today</h1>
+
+<form action="/v2/diary/hub-updated" method="post">
+
+  <div class="nhsuk-form-group">
+    <fieldset class="nhsuk-fieldset">
+      <legend class="nhsuk-fieldset__legend nhsuk-label--m">
+        Did you have a headache today?
+      </legend>
+      <div class="nhsuk-radios">
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="headache-yes" name="headache-today" type="radio" value="yes" onclick="toggleSections()">
+          <label class="nhsuk-label nhsuk-radios__label" for="headache-yes">
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input" id="headache-no" name="headache-today" type="radio" value="no" onclick="toggleSections()">
+          <label class="nhsuk-label nhsuk-radios__label" for="headache-no">
+            No
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="yes-section" style="display:none">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="start-time">
+        What time did it start?
+      </label>
+      <input class="nhsuk-input nhsuk-u-width-one-third" id="start-time" name="start-time" type="time">
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="duration">
+        How long did it last?
+      </label>
+      <select class="nhsuk-select" id="duration" name="duration">
+        <option value="">Select duration</option>
+        <option value="30min">Less than 30 minutes</option>
+        <option value="30-2hr">30 minutes – 2 hours</option>
+        <option value="2-6hr">2–6 hours</option>
+        <option value=">6hr">More than 6 hours</option>
+      </select>
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="pain-description">
+        Describe the pain
+      </label>
+      <textarea class="nhsuk-textarea" id="pain-description" name="pain-description" rows="4"></textarea>
+    </div>
+
+    <div class="nhsuk-form-group">
+      <fieldset class="nhsuk-fieldset">
+        <legend class="nhsuk-fieldset__legend nhsuk-label--m">
+          What do you think may have triggered it?
+        </legend>
+        <div class="nhsuk-checkboxes">
+          <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="trigger-stress" name="triggers" type="checkbox" value="stress">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="trigger-stress">
+              Stress
+            </label>
+          </div>
+          <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="trigger-sleep" name="triggers" type="checkbox" value="sleep">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="trigger-sleep">
+              Poor sleep
+            </label>
+          </div>
+          <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="trigger-food" name="triggers" type="checkbox" value="missed meals">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="trigger-food">
+              Missed meals
+            </label>
+          </div>
+          <div class="nhsuk-checkboxes__item">
+            <input class="nhsuk-checkboxes__input" id="trigger-unknown" name="triggers" type="checkbox" value="unknown">
+            <label class="nhsuk-label nhsuk-checkboxes__label" for="trigger-unknown">
+              Not sure
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="medication">
+        Did you take any medication?
+      </label>
+      <input class="nhsuk-input nhsuk-u-width-two-thirds" id="medication" name="medication" type="text">
+    </div>
+
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="notes">
+        Anything else you'd like to note?
+      </label>
+      <textarea class="nhsuk-textarea" id="notes" name="notes" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div id="no-section" style="display:none">
+    <div class="nhsuk-form-group">
+      <label class="nhsuk-label" for="no-notes">
+        Did you do anything differently today?
+      </label>
+      <textarea class="nhsuk-textarea" id="no-notes" name="no-notes" rows="3"></textarea>
+    </div>
+  </div>
+
+  <button class="nhsuk-button" type="submit">
+    Save today’s entry
+  </button>
+
+</form>
+
+<script>
+function toggleSections() {
+  const yesChecked = document.getElementById('headache-yes').checked;
+  const noChecked = document.getElementById('headache-no').checked;
+
+  document.getElementById('yes-section').style.display = yesChecked ? 'block' : 'none';
+  document.getElementById('no-section').style.display = noChecked ? 'block' : 'none';
+}
+</script>
+
+{% endblock %}

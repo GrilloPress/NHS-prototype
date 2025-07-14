@@ -1,0 +1,64 @@
+{% extends 'layout-app.html' %}
+
+{% set hub = "Messages" %}
+
+{% set backLink = true %}
+{% set backLinkURL = "/pages/messages/your-messages" %}
+
+{% set pageHeading = "Help with headaches" %}
+{% set pageDescription = "Received today at 1:02pm" %}
+
+{% block content %}
+
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+      <!-- DYNAMIC PAGE TITLE -->
+      {{ dynamicPageTitle({
+        title: pageHeading,
+        titleSmall: true,
+        titleHiddenTextBefore: "Message from",
+        description: pageDescription,
+        descriptionMuted: true
+      })}}
+
+      
+      <div class="nhsuk-u-margin-bottom-7">
+
+        <div class="message-container">
+
+          <p>Hi Alex,</p>
+          <p>Thank you for filling in the headache diary. Please continue to do so. It's been really helpful and I hope you've found it useful.</p>
+          <p>I’ve spoken with the neurology team at Greatwood Hospital about your headaches. They’ve recommended you have an MRI scan to help us look into things further.</p>
+        </div>
+
+        {{ nhsappCardGroup({
+          stacked: true,
+          classes: "app-cards--secondary message-card",
+          cards: [
+            {
+              title: "Book an MRI scan",
+              href: "/v2/mri/venue"
+            }
+          ]
+        }) }}
+
+
+        
+
+
+        <hr>
+        <div class="message-container">
+          <p>Hi Alex,</p>
+          <p>Thank you for your recent message about your headaches. I've reviewed the information you've provided, along with your medical history.</p>
+          <p>To help us better understand the pattern and possible causes of your headaches, I’d like to suggest keeping a headache diary for the next 2–3 weeks. This can be really helpful in identifying any triggers or trends, and it will also support us in deciding the most effective next steps and help get specialist if needed.</p>
+          <p>You can do the diary in the app from the <a href="/v2/diary/">homescreen</a>. But we'll also send you a notification weekly to check on how you're going</p>
+          <p>If you have any questions, <a href="#">reply to this messsage</a> or give us a call</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% endblock %}
