@@ -2,14 +2,6 @@
 
 {% set hub = "Services" %}
 
-{% set backLink = true %}
-
-{% if data['appointment-location'] == "Phone"  %}
-  {% set backLinkURL = "/pages/services/gp-appointment-phone-number" %}
-{% else %}
-  {% set backLinkURL = "/pages/services/gp-appointment-reason" %}
-{% endif %}
-
 {% set pageHeading = "Check appointment details" %}
 
 {% block content %}
@@ -31,7 +23,7 @@
             Time and date
           </dt>
           <dd class="nhsuk-summary-list__value">
-            {{ data['appointment-time'] or '9:00am' }} on {{ data['appointment-date'] or 'Wednesday 29 May 2024' }}
+            Wednesday 16 July 2025 at {{ data['appointment-time'] or "8:00am"}}
           </dd>
           <dd class="nhsuk-summary-list__actions">
             <a class="nhsuk-link--no-visited-state" href="/v2/confirmed">
