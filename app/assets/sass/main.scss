@@ -83,9 +83,20 @@
 }
 
 .message-container--reply {
-  background-color: white;
+  background-color: #d7e9f6;
   padding: 0.5rem;
   border-radius: 12px;
-  border-right: 10px solid white;
-  margin-right: 1rem;
+  border-left: 10px solid #d7e9f6;
+  border-right: 0;
+  margin-left: 1rem;
+}
+
+.message-container--consultant {
+  background-color: #efefef;
+  border-right: 10px solid #efefef;
+  ;
+}
+
+small.reply {
+  margin-left: 2rem;
 }
